@@ -1,12 +1,14 @@
+import { Link, useNavigate } from "react-router-dom";
+import { LOCALSTORAGE, NAVIGATION } from "../config.js";
+
 const NavBar = () => {
+  const navigate = useNavigate();
+  const isLoggedin = localStorage.getItem(LOCALSTORAGE.ISLOGGEDIN);
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
+    <nav className="navbar navbar-expand-lg NavBarStyle">
+      <div className="container-fluid">
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -14,68 +16,75 @@ const NavBar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to={NAVIGATION.Home}
+              >
                 Home
-              </a>
+              </Link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Link
-              </a>
+            <li className="nav-item">
+              <Link className="nav-link" href="#">
+                Contact
+              </Link>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                The Team
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu bg-info">
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Action
-                  </a>
+                  <Link className="dropdown-item" to={NAVIGATION.KELLY}>
+                    Kelly Mercer
+                  </Link>
                 </li>
+
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
+                  <hr className="dropdown-divider" />
                 </li>
+                <Link className="dropdown-item" to={NAVIGATION.DANYELLE}>
+                  Danyelle Dubeau
+                </Link>
+
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr className="dropdown-divider" />
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Something else here
+                <li className="">
+                  <a className="dropdown-item" href="#">
+                    Emily Vokey
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">
+            {isLoggedin !== "guest" ? (
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to={NAVIGATION.GIFTCARDS}
+                >
+                  Gift Card
+                </Link>
+              </li>
+            ) : null}
+            <li className="nav-item">
+              <a className="nav-link disabled" aria-disabled="true">
                 Disabled
               </a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>
