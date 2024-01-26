@@ -47,3 +47,25 @@
   border: none;
   cursor: pointer;
 }
+
+.aside-content {
+  flex: 1; /* Take up equal space on either side */
+margin-left: 8%;
+margin-top: 1rem;
+}
+
+
+@media (max-width: 768px) {
+
+  .aside-content {
+    display: none; /* Hide the side content on small screens */
+  }
+}
+
+.home-container {
+  display: flex;
+  justify-content: center; /* Center the main content */
+  align-items: start; /* Align items to the start of the container */
+
+}
+

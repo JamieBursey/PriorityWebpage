@@ -62,9 +62,9 @@ const NavBar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li className="">
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={"/"}>
                     Emily Vokey
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
