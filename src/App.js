@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 import React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { Home, Kelly, Danyelle, GiftCards, Emily } from "./pages.js";
+import { Home, Kelly, Danyelle, GiftCards, Emily, Courtney } from "./pages.js";
 import { NavBar } from "./components.js/NavBar.js";
 import { LOCALSTORAGE } from "./config.js/index.js";
 import { useState } from "react";
@@ -33,6 +33,7 @@ function App() {
             <Route path="/danyelle" element={<Danyelle />}></Route>
             <Route path="/giftCards" element={<GiftCards />}></Route>
             <Route path="/emily" element={<Emily />}></Route>
+            <Route path="/courtney" element={<Courtney />}></Route>
           </Routes>
         </BrowserRouter>
       </div>

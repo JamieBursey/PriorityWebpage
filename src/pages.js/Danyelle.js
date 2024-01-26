@@ -1,5 +1,6 @@
+import { DanyellesProfile } from "../components.js";
 const Danyelle = () => {
-  return <div> about Danyelle</div>;
+  return <DanyellesProfile />;
 };
 
 export { Danyelle };

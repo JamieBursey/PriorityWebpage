@@ -5,6 +5,7 @@ module.exports = {
     DANYELLE: "/danyelle",
     EMILY: "/emily",
     GIFTCARDS: "/giftCards",
+    COURTNEY: "/COURTNEY",
   },
 
   LOCALSTORAGE: {
