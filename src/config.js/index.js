@@ -1,6 +1,6 @@
 module.exports = {
   NAVIGATION: {
-    Home: "/",
+    Home: "/PriorityWebpage",
     KELLY: "/kelly",
     DANYELLE: "/danyelle",
     EMILY: "/emily,",

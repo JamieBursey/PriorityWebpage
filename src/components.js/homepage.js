@@ -7,9 +7,9 @@ const CarouselImages = () => {
       style={{ marginLeft: "auto", marginRight: "auto", width: "30%" }}
     >
       <div className="carousel-inner">
-        <div className="carousel-item active mt-3">
+        <div className="carousel-item active mt-2">
           <img
-            src="/priorityheader.jpeg"
+            src={process.env.PUBLIC_URL + "/priorityheader.jpeg"}
             className="d-block mx-auto img-fluid"
             alt="First slide"
             style={{ objectFit: "cover" }}
@@ -17,7 +17,7 @@ const CarouselImages = () => {
         </div>
         <div className="carousel-item mt-3">
           <img
-            src="/KellyBirthday.jpeg"
+            src={process.env.PUBLIC_URL + "/KellyBirthday.jpeg"}
             className="d-block mx-auto img-fluid"
             alt="First slide"
             style={{ objectFit: "cover" }}
@@ -25,7 +25,7 @@ const CarouselImages = () => {
         </div>
         <div className="carousel-item mt-3">
           <img
-            src="/Danyelle.jpeg"
+            src={process.env.PUBLIC_URL + "/Danyelle.jpeg"}
             className="d-block mx-auto img-fluid"
             alt="First slide"
             style={{ objectFit: "cover" }}
@@ -33,7 +33,7 @@ const CarouselImages = () => {
         </div>
         <div className="carousel-item mt-3">
           <img
-            src="/EmilyHome.jpeg"
+            src={process.env.PUBLIC_URL + "/EmilyHome.jpeg"}
             className="d-block mx-auto img-fluid"
             alt="First slide"
             style={{ objectFit: "cover" }}
@@ -41,7 +41,7 @@ const CarouselImages = () => {
         </div>
         <div className="carousel-item mt-3">
           <img
-            src="/courtneyhome.jpeg"
+            src={process.env.PUBLIC_URL + "/courtneyhome.jpeg"}
             className="d-block mx-auto img-fluid"
             alt="First slide"
             style={{ objectFit: "cover" }}
@@ -49,7 +49,7 @@ const CarouselImages = () => {
         </div>
         <div className="carousel-item mt-3">
           <img
-            src="/GuaSha.jpeg"
+            src={process.env.PUBLIC_URL + "/GuaSha.jpeg"}
             className="d-block mx-auto img-fluid"
             alt="First slide"
             style={{ objectFit: "cover" }}

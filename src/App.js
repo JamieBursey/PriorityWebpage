@@ -20,7 +20,7 @@ function App() {
           <NavBar isLoggedIn={isLoggedIn} />
           <Routes>
             <Route
-              path="/"
+              path="/PriorityWebpage"
               element={
                 <Home
                   setIsLoggedIn={setIsLoggedIn}

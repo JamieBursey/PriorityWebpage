@@ -7,7 +7,7 @@ const Home = ({ setIsLoggedIn, showForm, setShowForm }) => {
       <div className="home-container bg-secondary">
         <div className="aside-content">
           <img
-            src="/recognition.jpeg"
+            src={process.env.PUBLIC_URL + "/recognition.jpeg"}
             alt="sideimage"
             style={{ height: "15rem" }}
           />
@@ -20,7 +20,11 @@ const Home = ({ setIsLoggedIn, showForm, setShowForm }) => {
         />
         <CarouselImages />
         <div className="aside-content">
-          <img src="/prices.jpeg" alt="sideimage" style={{ height: "15rem" }} />
+          <img
+            src={process.env.PUBLIC_URL + "/prices.jpeg"}
+            alt="sideimage"
+            style={{ height: "15rem" }}
+          />
         </div>
       </div>
       <WelcomeSection />
