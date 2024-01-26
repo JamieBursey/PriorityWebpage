@@ -3,7 +3,7 @@ module.exports = {
     Home: "/PriorityWebpage",
     KELLY: "/kelly",
     DANYELLE: "/danyelle",
-    EMILY: "/emily,",
+    EMILY: "/emily",
     GIFTCARDS: "/giftCards",
   },
 
