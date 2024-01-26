@@ -1,5 +1,11 @@
+import {
+  KellysProfile,
+  KellysProfile2,
+  KellysProfile3,
+} from "../components.js";
+
 const Kelly = () => {
-  return <div className="text-danger">About Boss Lady</div>;
+  return <KellysProfile />;
 };
 
 export { Kelly };

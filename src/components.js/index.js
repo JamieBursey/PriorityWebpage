@@ -5,6 +5,7 @@ import { CarouselImages, WelcomeSection } from "./homepage";
 import { EmilysProfile } from "./EmilysPage";
 import { DanyellesProfile } from "./DanyellesPage";
 import { CourtneysProfile } from "./CourtneysPage";
+import { KellysProfile, KellysProfile2, KellysProfile3 } from "./KellysProfile";
 
 export {
   NavBar,
@@ -15,4 +16,7 @@ export {
   EmilysProfile,
   DanyellesProfile,
   CourtneysProfile,
+  KellysProfile,
+  KellysProfile2,
+  KellysProfile3,
 };
