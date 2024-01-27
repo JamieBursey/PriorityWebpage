@@ -1,4 +1,8 @@
-import { LoginForm } from "../components.js";
+import {
+  ContactComponent,
+  GoogleMapsLocation,
+  LoginForm,
+} from "../components.js";
 import { CarouselImages, WelcomeSection } from "../components.js";
 
 const Home = ({ setIsLoggedIn, showForm, setShowForm }) => {
@@ -36,6 +40,8 @@ const Home = ({ setIsLoggedIn, showForm, setShowForm }) => {
         </div>
       </div>
       <WelcomeSection />
+      <GoogleMapsLocation />
+      <ContactComponent />
     </div>
   );
 };

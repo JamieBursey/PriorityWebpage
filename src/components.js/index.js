@@ -1,7 +1,12 @@
 import { NavBar } from "./NavBar";
 import { LoginForm } from "./Login";
 import { GiftCardTable } from "./GiftCardTable";
-import { CarouselImages, WelcomeSection } from "./homepage";
+import {
+  CarouselImages,
+  WelcomeSection,
+  ContactComponent,
+  GoogleMapsLocation,
+} from "./homepage";
 import { EmilysProfile } from "./EmilysPage";
 import { DanyellesProfile } from "./DanyellesPage";
 import { CourtneysProfile } from "./CourtneysPage";
@@ -19,4 +24,6 @@ export {
   KellysProfile,
   KellysProfile2,
   KellysProfile3,
+  ContactComponent,
+  GoogleMapsLocation,
 };
