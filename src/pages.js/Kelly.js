@@ -5,7 +5,7 @@ import {
 } from "../components.js";
 
 const Kelly = () => {
-  return <KellysProfile />;
+  return <KellysProfile3 />;
 };
 
 export { Kelly };

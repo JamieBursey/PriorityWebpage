@@ -15,7 +15,7 @@ function App() {
   const [showForm, setShowForm] = useState(true);
   return (
     <>
-      <div className="bg-dark" style={{ minHeight: "100vh" }}>
+      <div className="bg-white" style={{ minHeight: "100vh" }}>
         <BrowserRouter>
           <NavBar isLoggedIn={isLoggedIn} />
           <Routes>

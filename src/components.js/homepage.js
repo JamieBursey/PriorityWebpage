@@ -6,8 +6,11 @@ const CarouselImages = () => {
       data-bs-ride="carousel"
       style={{ marginLeft: "auto", marginRight: "auto", width: "30%" }}
     >
-      <div className="carousel-inner">
-        <div className="carousel-item active mt-2">
+      <div
+        className="carousel-inner mt-3 "
+        style={{ border: "5px solid #EADBD8", borderRadius: "5px" }}
+      >
+        <div className="carousel-item active">
           <img
             src={process.env.PUBLIC_URL + "/priorityheader.jpeg"}
             className="d-block mx-auto img-fluid"
@@ -15,35 +18,35 @@ const CarouselImages = () => {
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className="carousel-item mt-3">
+        <div className="carousel-item">
           <img
             src={process.env.PUBLIC_URL + "/KellyBirthday.jpeg"}
             className="d-block mx-auto img-fluid"
-            alt="First slide"
+            alt="Second slide"
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className="carousel-item mt-3">
+        <div className="carousel-item">
           <img
             src={process.env.PUBLIC_URL + "/Danyelle.jpeg"}
             className="d-block mx-auto img-fluid"
-            alt="First slide"
+            alt="Third slide"
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className="carousel-item mt-3">
+        <div className="carousel-item">
           <img
             src={process.env.PUBLIC_URL + "/EmilyHome.jpeg"}
             className="d-block mx-auto img-fluid"
-            alt="First slide"
+            alt="Fourth slide"
             style={{ objectFit: "cover" }}
           />
         </div>
-        <div className="carousel-item mt-3">
+        <div className="carousel-item">
           <img
             src={process.env.PUBLIC_URL + "/courtneyhome.jpeg"}
             className="d-block mx-auto img-fluid"
-            alt="First slide"
+            alt="Fifth slide"
             style={{ objectFit: "cover" }}
           />
         </div>
@@ -51,7 +54,7 @@ const CarouselImages = () => {
           <img
             src={process.env.PUBLIC_URL + "/GuaSha.jpeg"}
             className="d-block mx-auto img-fluid"
-            alt="First slide"
+            alt="Sixth slide"
             style={{ objectFit: "cover" }}
           />
         </div>

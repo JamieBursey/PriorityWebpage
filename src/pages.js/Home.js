@@ -3,13 +3,17 @@ import { CarouselImages, WelcomeSection } from "../components.js";
 
 const Home = ({ setIsLoggedIn, showForm, setShowForm }) => {
   return (
-    <div className="bg-secondary">
-      <div className="home-container bg-secondary">
+    <div className="">
+      <div className="home-container">
         <div className="aside-content">
           <img
             src={process.env.PUBLIC_URL + "/recognition.jpeg"}
             alt="sideimage"
-            style={{ height: "15rem" }}
+            style={{
+              height: "15rem",
+              border: "5px solid #EADBD8",
+              borderRadius: "5px",
+            }}
           />
         </div>
         <LoginForm
@@ -23,7 +27,11 @@ const Home = ({ setIsLoggedIn, showForm, setShowForm }) => {
           <img
             src={process.env.PUBLIC_URL + "/prices.jpeg"}
             alt="sideimage"
-            style={{ height: "15rem" }}
+            style={{
+              height: "15rem",
+              border: "5px solid #EADBD8",
+              borderRadius: "5px",
+            }}
           />
         </div>
       </div>

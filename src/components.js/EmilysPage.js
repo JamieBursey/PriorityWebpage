@@ -3,7 +3,7 @@ const EmilysProfile = () => {
     <div className="bg-secondary" style={{ minHeight: "100vh" }}>
       <div className="container">
         <div className="row align-items-center">
-          <div lg={4} className="col mb-4 mb-lg-0 mt-2">
+          <div className="col mb-4 mb-lg-0 mt-2">
             <div className="card">
               <img
                 src={process.env.PUBLIC_URL + "/EmilyHome.jpeg"}
@@ -16,7 +16,7 @@ const EmilysProfile = () => {
               </div>
             </div>
           </div>
-          <div className="col mt-4" lg={8}>
+          <div className="col mt-4">
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">About</h5>
