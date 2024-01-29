@@ -2,37 +2,40 @@ import { useState, useEffect } from "react";
 import { LOCALSTORAGE } from "../config.js";
 
 const GiftCardTable = () => {
-  return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  );
+  const [row, setRow] = useState(() => {
+    const savedRows = localStorage.getItem(LOCALSTORAGE.SAVEDROW);
+    return savedRows ? JSON.parse(savedRows) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(LOCALSTORAGE.SAVEDROW, JSON.stringify(row));
+  }, [row]);
+
+  const addRow = () => {
+    const newRow = {
+      id: row.length + 1,
+      name: "",
+      therapist: "",
+      date: "",
+      value: "",
+      cardNumber: "",
+      date: "",
+      claimed: "",
+      Delete: "",
+    };
+    setRow([...row, newRow]);
+  };
+
+  const updateRow = (index, field, value) => {
+    const newRows = [...row];
+    newRows[index][field] = value;
+    setRow(newRows);
+  };
+
+  const deleteRow = (index) => {
+    const newRows = row.filter((rows, rowIndex) => rowIndex !== index);
+    setRow(newRows);
+  };
 };
 
 export { GiftCardTable };
