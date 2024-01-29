@@ -10,5 +10,6 @@ module.exports = {
 
   LOCALSTORAGE: {
     ISLOGGEDIN: "ISLOGGEDIN",
+    SAVEDROW: "SAVEDROW",
   },
 };

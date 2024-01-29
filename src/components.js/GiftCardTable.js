@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { LOCALSTORAGE } from "../config.js";
+
 const GiftCardTable = () => {
   return (
     <table className="table">
