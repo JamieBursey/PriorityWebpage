@@ -44,8 +44,6 @@ const Home = ({ setIsLoggedIn, showForm, setShowForm }) => {
       <WelcomeSection />
       <GoogleMapsLocation />
       <ContactComponent />
-      <FaceBookMessages />
-      <MessengerLink />
     </div>
   );
 };

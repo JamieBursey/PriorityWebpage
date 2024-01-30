@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import firebase from "firebase/app";
+import "firebase/firestore";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { Home, Kelly, Danyelle, GiftCards, Emily, Courtney } from "./pages.js";
 import { NavBar } from "./components.js/NavBar.js";

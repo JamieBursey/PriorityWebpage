@@ -4,7 +4,7 @@ const GiftCards = () => {
   return (
     <div>
       <GiftCardTable />
-      <FaceBookMessages />
+      {/* <FaceBookMessages /> */}
     </div>
   );
 };

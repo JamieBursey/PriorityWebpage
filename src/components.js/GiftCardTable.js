@@ -1,51 +1,83 @@
 import { useState, useEffect } from "react";
-import { LOCALSTORAGE } from "../config.js";
+import app from "../firebaseConfig";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
+
+const db = getFirestore(); // Make sure you initialize Firebase before calling this
 
 const GiftCardTable = () => {
   const therapists = ["Kelly", "Danyelle", "Emily", "Courtney"];
   const giftValues = [75, 85, 105, 160];
-  const [row, setRow] = useState(() => {
-    const savedRows = localStorage.getItem(LOCALSTORAGE.SAVEDROW);
-    return savedRows ? JSON.parse(savedRows) : [];
-  });
+  const [rows, setRows] = useState([]);
 
+  // Load initial data from Firestore
   useEffect(() => {
-    localStorage.setItem(LOCALSTORAGE.SAVEDROW, JSON.stringify(row));
-  }, [row]);
+    const loadRows = async () => {
+      const querySnapshot = await getDocs(collection(db, "giftCards"));
+      const loadedRows = [];
+      querySnapshot.forEach((doc) => {
+        loadedRows.push({ id: doc.id, ...doc.data() });
+      });
+      setRows(loadedRows);
+    };
 
-  const addRow = () => {
+    loadRows();
+  }, []);
+
+  // Add a new row to Firestore
+  const addRowToFirestore = async () => {
     const newRow = {
-      id: row.length + 1,
       name: "",
       therapist: "",
       date: "",
       value: "",
       cardNumber: "",
-      date: "",
-      claimed: "",
-      Delete: "",
+      claimed: false,
     };
-    setRow([...row, newRow]);
+    const docRef = await addDoc(collection(db, "giftCards"), newRow);
+    setRows([...rows, { ...newRow, id: docRef.id }]);
   };
 
-  const updateRow = (index, field, value) => {
-    const newRows = [...row];
-    newRows[index][field] = value;
-    setRow(newRows);
+  // Update a row in Firestore
+  const updateRowInFirestore = async (index, field, value) => {
+    const updatedRows = [...rows];
+    const row = updatedRows[index];
+    row[field] = value;
+    setRows(updatedRows);
+
+    const rowRef = doc(db, "giftCards", row.id);
+    await updateDoc(rowRef, { [field]: value });
   };
 
-  const deleteRow = (index) => {
-    const newRows = row.filter((rows, rowIndex) => rowIndex !== index);
-    setRow(newRows);
+  // Delete a row from Firestore
+  const deleteRowFromFirestore = async (index) => {
+    const row = rows[index];
+    const newRows = rows.filter((_, idx) => idx !== index);
+    setRows(newRows);
+
+    const rowRef = doc(db, "giftCards", row.id);
+    await deleteDoc(rowRef);
   };
-  const updateClaimed = (index) => {
-    const newRows = [...row];
-    newRows[index].claimed = !newRows[index].claimed;
-    setRow(newRows);
+
+  // Toggle claimed status in Firestore
+  const updateClaimed = async (index) => {
+    const updatedRows = [...rows];
+    updatedRows[index].claimed = !updatedRows[index].claimed;
+    setRows(updatedRows);
+
+    const rowRef = doc(db, "giftCards", updatedRows[index].id);
+    await updateDoc(rowRef, { claimed: updatedRows[index].claimed });
   };
   return (
     <>
-      <button onClick={addRow} className="btn btn-primary mt-2 mb-2">
+      <button onClick={addRowToFirestore} className="btn btn-primary mt-2 mb-2">
         Add Row
       </button>
       <table className="table">
@@ -61,7 +93,7 @@ const GiftCardTable = () => {
           </tr>
         </thead>
         <tbody>
-          {row.map((row, index) => (
+          {rows.map((row, index) => (
             <tr key={index}>
               <td>
                 <input
@@ -69,7 +101,9 @@ const GiftCardTable = () => {
                   className="form-control"
                   placeholder="Purchaser Name"
                   value={row.name}
-                  onChange={(e) => updateRow(index, "name", e.target.value)}
+                  onChange={(e) =>
+                    updateRowInFirestore(index, "name", e.target.value)
+                  }
                 />
               </td>
               <td>
@@ -77,7 +111,7 @@ const GiftCardTable = () => {
                   className="form-select"
                   value={row.therapist}
                   onChange={(e) =>
-                    updateRow(index, "therapist", e.target.value)
+                    updateRowInFirestore(index, "therapist", e.target.value)
                   }
                 >
                   <option value="">Select Therapist</option>
@@ -93,14 +127,18 @@ const GiftCardTable = () => {
                   type="date"
                   className="form-control"
                   value={row.date}
-                  onChange={(e) => updateRow(index, "date", e.target.value)}
+                  onChange={(e) =>
+                    updateRowInFirestore(index, "date", e.target.value)
+                  }
                 />
               </td>
               <td>
                 <select
                   className="form-select"
                   value={row.value}
-                  onChange={(e) => updateRow(index, "value", e.target.value)}
+                  onChange={(e) =>
+                    updateRowInFirestore(index, "value", e.target.value)
+                  }
                 >
                   {giftValues.map((price, index) => (
                     <option key={index} value={price}>
@@ -116,7 +154,7 @@ const GiftCardTable = () => {
                   placeholder="Number"
                   value={row.cardNumber}
                   onChange={(e) =>
-                    updateRow(index, "cardNumber", e.target.value)
+                    updateRowInFirestore(index, "cardNumber", e.target.value)
                   }
                 />
               </td>
@@ -138,7 +176,7 @@ const GiftCardTable = () => {
               </td>
               <td>
                 <button
-                  onClick={() => deleteRow(index)}
+                  onClick={() => deleteRowFromFirestore(index)}
                   className="btn btn-danger"
                 >
                   Delete
