@@ -10,7 +10,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
-const db = getFirestore(); // Make sure you initialize Firebase before calling this
+const db = getFirestore();
 
 const GiftCardTable = () => {
   const therapists = ["Kelly", "Danyelle", "Emily", "Courtney"];
@@ -192,7 +192,6 @@ const GiftCardTable = () => {
 
 const FaceBookMessages = () => {
   useEffect(() => {
-    // Load the Facebook SDK script
     (function (d, s, id) {
       var js,
         fjs = d.getElementsByTagName(s)[0];
@@ -203,7 +202,6 @@ const FaceBookMessages = () => {
       fjs.parentNode.insertBefore(js, fjs);
     })(document, "script", "facebook-jssdk");
 
-    // Initialize the Facebook SDK and Chat plugin
     window.fbAsyncInit = function () {
       window.FB.init({
         xfbml: true,
