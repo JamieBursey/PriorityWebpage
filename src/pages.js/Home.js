@@ -1,7 +1,9 @@
 import {
   ContactComponent,
+  FaceBookMessages,
   GoogleMapsLocation,
   LoginForm,
+  MessengerLink,
 } from "../components.js";
 import { CarouselImages, WelcomeSection } from "../components.js";
 
@@ -42,6 +44,8 @@ const Home = ({ setIsLoggedIn, showForm, setShowForm }) => {
       <WelcomeSection />
       <GoogleMapsLocation />
       <ContactComponent />
+      <FaceBookMessages />
+      <MessengerLink />
     </div>
   );
 };

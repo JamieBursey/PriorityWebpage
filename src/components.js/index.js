@@ -1,6 +1,10 @@
 import { NavBar } from "./NavBar";
 import { LoginForm } from "./Login";
-import { GiftCardTable } from "./GiftCardTable";
+import {
+  GiftCardTable,
+  FaceBookMessages,
+  MessengerLink,
+} from "./GiftCardTable";
 import {
   CarouselImages,
   WelcomeSection,
@@ -26,4 +30,6 @@ export {
   KellysProfile3,
   ContactComponent,
   GoogleMapsLocation,
+  FaceBookMessages,
+  MessengerLink,
 };

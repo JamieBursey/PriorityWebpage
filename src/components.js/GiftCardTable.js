@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { LOCALSTORAGE } from "../config.js";
 
 const GiftCardTable = () => {
+  const therapists = ["Kelly", "Danyelle", "Emily", "Courtney"];
+  const giftValues = [75, 85, 105, 160];
   const [row, setRow] = useState(() => {
     const savedRows = localStorage.getItem(LOCALSTORAGE.SAVEDROW);
     return savedRows ? JSON.parse(savedRows) : [];
@@ -71,15 +73,20 @@ const GiftCardTable = () => {
                 />
               </td>
               <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Therapist"
+                <select
+                  className="form-select"
                   value={row.therapist}
                   onChange={(e) =>
                     updateRow(index, "therapist", e.target.value)
                   }
-                />
+                >
+                  <option value="">Select Therapist</option>
+                  {therapists.map((therapist, index) => (
+                    <option key={index} value={therapist}>
+                      {therapist}
+                    </option>
+                  ))}
+                </select>
               </td>
               <td>
                 <input
@@ -90,13 +97,17 @@ const GiftCardTable = () => {
                 />
               </td>
               <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Value"
+                <select
+                  className="form-select"
                   value={row.value}
                   onChange={(e) => updateRow(index, "value", e.target.value)}
-                />
+                >
+                  {giftValues.map((price, index) => (
+                    <option key={index} value={price}>
+                      ${price}
+                    </option>
+                  ))}
+                </select>
               </td>
               <td>
                 <input
@@ -141,4 +152,52 @@ const GiftCardTable = () => {
   );
 };
 
-export { GiftCardTable };
+const FaceBookMessages = () => {
+  useEffect(() => {
+    // Load the Facebook SDK script
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+
+    // Initialize the Facebook SDK and Chat plugin
+    window.fbAsyncInit = function () {
+      window.FB.init({
+        xfbml: true,
+        version: "v19.0",
+      });
+
+      // Set attributes for the chatbox when FB is initialized
+      const chatbox = document.getElementById("fb-customer-chat");
+      if (chatbox) {
+        chatbox.setAttribute("page_id", "102092832047492");
+        chatbox.setAttribute("attribution", "biz_inbox");
+      }
+    };
+  }, []);
+
+  return (
+    <>
+      <div id="fb-root"></div>
+      <div id="fb-customer-chat" className="fb-customerchat"></div>
+    </>
+  );
+};
+const MessengerLink = () => {
+  return (
+    <a
+      href="https://m.me/102092832047492"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Message Us
+    </a>
+  );
+};
+
+export { GiftCardTable, FaceBookMessages, MessengerLink };

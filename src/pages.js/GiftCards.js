@@ -1,9 +1,10 @@
-import { GiftCardTable } from "../components.js";
+import { GiftCardTable, FaceBookMessages } from "../components.js";
 
 const GiftCards = () => {
   return (
     <div>
       <GiftCardTable />
+      <FaceBookMessages />
     </div>
   );
 };
