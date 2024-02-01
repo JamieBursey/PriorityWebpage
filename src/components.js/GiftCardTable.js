@@ -80,33 +80,135 @@ const GiftCardTable = () => {
       <button onClick={addRowToFirestore} className="btn btn-primary mt-2 mb-2">
         Add Row
       </button>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Therapist</th>
-            <th scope="col">Date</th>
-            <th scope="col">Value</th>
-            <th scope="col">Card Number</th>
-            <th scope="col">Claimed</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, index) => (
-            <tr key={index}>
-              <td>
+
+      <div className="d-none d-md-block table-responsive">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Therapist</th>
+              <th scope="col">Date</th>
+              <th scope="col">Value</th>
+              <th scope="col">Card Number</th>
+              <th scope="col">Claimed</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, index) => (
+              <tr key={index}>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Purchaser Name"
+                    value={row.name}
+                    onChange={(e) =>
+                      updateRowInFirestore(index, "name", e.target.value)
+                    }
+                  />
+                </td>
+                <td>
+                  <select
+                    className="form-select"
+                    value={row.therapist}
+                    onChange={(e) =>
+                      updateRowInFirestore(index, "therapist", e.target.value)
+                    }
+                  >
+                    <option value="">Select Therapist</option>
+                    {therapists.map((therapist, index) => (
+                      <option key={index} value={therapist}>
+                        {therapist}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="date"
+                    className="form-control"
+                    value={row.date}
+                    onChange={(e) =>
+                      updateRowInFirestore(index, "date", e.target.value)
+                    }
+                  />
+                </td>
+                <td>
+                  <select
+                    className="form-select"
+                    value={row.value}
+                    onChange={(e) =>
+                      updateRowInFirestore(index, "value", e.target.value)
+                    }
+                  >
+                    {giftValues.map((price, index) => (
+                      <option key={index} value={price}>
+                        ${price}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Number"
+                    value={row.cardNumber}
+                    onChange={(e) =>
+                      updateRowInFirestore(index, "cardNumber", e.target.value)
+                    }
+                  />
+                </td>
+                <td>
+                  <div className="form-check form-switch">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      role="switch"
+                      id={`claimedSwitch${index}`}
+                      checked={row.claimed}
+                      onChange={() => updateClaimed(index)}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor={`claimedSwitch${index}`}
+                    ></label>
+                  </div>
+                </td>
+                <td>
+                  <button
+                    onClick={() => deleteRowFromFirestore(index)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="d-block d-md-none">
+        {" "}
+        //layout for mobile to be cards
+        {rows.map((row, index) => (
+          <div className="card mb-3" key={index}>
+            <div className="card-body">
+              <div className="mb-3">
+                <label className="form-label">Name</label>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Purchaser Name"
                   value={row.name}
                   onChange={(e) =>
                     updateRowInFirestore(index, "name", e.target.value)
                   }
                 />
-              </td>
-              <td>
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Therapist</label>
                 <select
                   className="form-select"
                   value={row.therapist}
@@ -115,14 +217,16 @@ const GiftCardTable = () => {
                   }
                 >
                   <option value="">Select Therapist</option>
-                  {therapists.map((therapist, index) => (
-                    <option key={index} value={therapist}>
+                  {therapists.map((therapist, idx) => (
+                    <option key={idx} value={therapist}>
                       {therapist}
                     </option>
                   ))}
                 </select>
-              </td>
-              <td>
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Date</label>
                 <input
                   type="date"
                   className="form-control"
@@ -131,8 +235,10 @@ const GiftCardTable = () => {
                     updateRowInFirestore(index, "date", e.target.value)
                   }
                 />
-              </td>
-              <td>
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Value</label>
                 <select
                   className="form-select"
                   value={row.value}
@@ -140,25 +246,28 @@ const GiftCardTable = () => {
                     updateRowInFirestore(index, "value", e.target.value)
                   }
                 >
-                  {giftValues.map((price, index) => (
-                    <option key={index} value={price}>
+                  {giftValues.map((price, idx) => (
+                    <option key={idx} value={price}>
                       ${price}
                     </option>
                   ))}
                 </select>
-              </td>
-              <td>
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Card Number</label>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Number"
                   value={row.cardNumber}
                   onChange={(e) =>
                     updateRowInFirestore(index, "cardNumber", e.target.value)
                   }
                 />
-              </td>
-              <td>
+              </div>
+
+              <div className="mb-3">
+                <p>Claimed</p>
                 <div className="form-check form-switch">
                   <input
                     className="form-check-input"
@@ -171,21 +280,22 @@ const GiftCardTable = () => {
                   <label
                     className="form-check-label"
                     htmlFor={`claimedSwitch${index}`}
-                  ></label>
+                  >
+                    Claimed
+                  </label>
                 </div>
-              </td>
-              <td>
-                <button
-                  onClick={() => deleteRowFromFirestore(index)}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              </div>
+
+              <button
+                onClick={() => deleteRowFromFirestore(index)}
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
