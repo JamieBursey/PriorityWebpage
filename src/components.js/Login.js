@@ -21,7 +21,7 @@ const LoginForm = ({ showForm, setShowForm, presetKey }) => {
   return (
     <div className="modal-container">
       <div className="modal-content">
-        <div className="modal-header">Priority Wellness</div>
+        <div className="modal-header mx-auto">Priority Wellness</div>
         <input
           className="modal-input"
           type="text"

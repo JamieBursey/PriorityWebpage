@@ -194,8 +194,8 @@ const GiftCardTable = () => {
         {" "}
         //layout for mobile to be cards
         {rows.map((row, index) => (
-          <div className="card mb-3" key={index}>
-            <div className="card-body">
+          <div className="container mb-3" key={index}>
+            <div className="card-body mobile-gift-card p-2">
               <div className="mb-3">
                 <label className="form-label">Name</label>
                 <input
