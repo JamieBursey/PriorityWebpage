@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/PriorityWebpage/static/css/main.4cb72a53.css",
-    "main.js": "/PriorityWebpage/static/js/main.e5497a90.js",
+    "main.css": "/PriorityWebpage/static/css/main.7ee2bdc3.css",
+    "main.js": "/PriorityWebpage/static/js/main.f141428c.js",
     "static/js/787.eff95f7a.chunk.js": "/PriorityWebpage/static/js/787.eff95f7a.chunk.js",
     "index.html": "/PriorityWebpage/index.html",
-    "main.4cb72a53.css.map": "/PriorityWebpage/static/css/main.4cb72a53.css.map",
-    "main.e5497a90.js.map": "/PriorityWebpage/static/js/main.e5497a90.js.map",
+    "main.7ee2bdc3.css.map": "/PriorityWebpage/static/css/main.7ee2bdc3.css.map",
+    "main.f141428c.js.map": "/PriorityWebpage/static/js/main.f141428c.js.map",
     "787.eff95f7a.chunk.js.map": "/PriorityWebpage/static/js/787.eff95f7a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4cb72a53.css",
-    "static/js/main.e5497a90.js"
+    "static/css/main.7ee2bdc3.css",
+    "static/js/main.f141428c.js"
   ]
 }
